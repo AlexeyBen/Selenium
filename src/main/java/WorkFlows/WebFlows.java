@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.Random;
 import java.util.logging.Logger;
 
+import static org.testng.AssertJUnit.fail;
+
 public class WebFlows extends CommonOps {
     static Logger log = Logger.getLogger("WebFlows");
 
@@ -47,6 +49,9 @@ public class WebFlows extends CommonOps {
         UIActions.input(HomePage.search_input, searchCriteria);
         UIActions.inputKeys(HomePage.search_input, Keys.ENTER);
         int relevantSearchElements = SearchResultPage.results.size() - 3;
+        if ((relevantSearchElements == 0)) {
+            fail("no relevant results were found");
+        }
         for (int i = 0; i < relevantSearchElements; i++) {
             if (SearchResultPage.results.get(i).getText().contains(searchCriteria)) {
                 log.info(i + 1 + "th search result contains the search criteria");
