@@ -1,6 +1,7 @@
 package Extensions;
 
 import Utilities.CommonOps;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -19,7 +20,13 @@ public class UIActions extends CommonOps {
         elem.sendKeys(Value);
     }
 
-    public static void  deleteInput (WebElement elem , String Value)
+    public static void  inputKeys (WebElement elem , Keys key)
+    {
+        wait.until(ExpectedConditions.visibilityOf(elem));
+        elem.sendKeys(key);
+    }
+
+    public static void  deleteInput (WebElement elem)
     {
         wait.until(ExpectedConditions.visibilityOf(elem));
         elem.clear();

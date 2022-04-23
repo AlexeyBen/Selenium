@@ -13,4 +13,14 @@ public class MenPage {
 
     @FindAll({@FindBy(xpath = "//ul[@class='products columns-4']/li[2]")})
     public static List<WebElement> products;
+
+    @FindAll({@FindBy(tagName = "bdi")})
+    public static List<WebElement>  price;
+
+    @FindBy(name = "add-to-cart")
+    public static WebElement addToCart_btn;
+
+    @FindBy(xpath = "//div[@class='quantity']/input")
+    public static WebElement quantity_input;
+
 }
