@@ -22,6 +22,8 @@ public class WebFlows extends CommonOps {
         if (driver.getCurrentUrl().equals("https://atid.store/product-category/men/")) {
             success = true;
             log.info("Successfully navigated to Mens`s page");
+        } else {
+            log.info("couldn't navigate to desired page");
         }
         return success;
     }
@@ -32,6 +34,8 @@ public class WebFlows extends CommonOps {
         if (Verifications.verifySelect(MenPage.sort_dropDown, selectBy)) {
             success = true;
             log.info("Successfully changed the value of the dropdown");
+        } else {
+            log.info("Couldn't change the sorting value");
         }
         return success;
     }
@@ -42,14 +46,18 @@ public class WebFlows extends CommonOps {
         UIActions.click(HomePage.search_icon);
         UIActions.input(HomePage.search_input, searchCriteria);
         UIActions.inputKeys(HomePage.search_input, Keys.ENTER);
-        for (int i = 0; i < SearchResultPage.results.size() - 3; i++) {
+        int relevantSearchElements = SearchResultPage.results.size() - 3;
+        for (int i = 0; i < relevantSearchElements; i++) {
             if (SearchResultPage.results.get(i).getText().contains(searchCriteria)) {
                 log.info(i + 1 + "th search result contains the search criteria");
                 counter++;
             }
         }
-        if (counter == SearchResultPage.results.size() - 3) {
+        if (counter == relevantSearchElements) {
             searchPerformed = true;
+            log.info("All the results contained the search criteria");
+        } else {
+            log.info("only " + counter + " out of " + relevantSearchElements + " contained the search criteria");
         }
         return searchPerformed;
     }
@@ -75,6 +83,7 @@ public class WebFlows extends CommonOps {
         boolean addedToCart = false;
         Random ran = new Random();
         int numOfProduct = ran.nextInt(4);
+        log.info("the chosen number of product is " + numOfProduct);
         double productPrice = getPrice(MenPage.price.get(1).getText());
         UIActions.deleteInput(MenPage.quantity_input);
         UIActions.input(MenPage.quantity_input, String.valueOf(numOfProduct));
@@ -120,7 +129,7 @@ public class WebFlows extends CommonOps {
         try {
             wait.until(ExpectedConditions.visibilityOf(ContactUs.afterSend_txt));
             if (ContactUs.afterSend_txt.getText().equals("Thanks for contacting us! We will be in touch with you shortly."))
-            success = true;
+                success = true;
             log.info("Contact us form was filled successfully");
         } catch (Exception e) {
             e.printStackTrace();
