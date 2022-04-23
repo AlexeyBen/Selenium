@@ -9,5 +9,6 @@ public class ManagePages extends CommonOps{
         homePage = PageFactory.initElements(driver,PageObjects.HomePage.class);
         mensPage = PageFactory.initElements(driver,PageObjects.MenPage.class);
         searchResultPage = PageFactory.initElements(driver,PageObjects.SearchResultPage.class);
+        contactUs = PageFactory.initElements(driver,PageObjects.ContactUs.class);
     }
 }

@@ -16,7 +16,7 @@ public class CommonOps extends Base{
     }
 
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void StartSession() {
         driver = initChromeDriver();
         driver.manage().window().maximize();
@@ -26,7 +26,7 @@ public class CommonOps extends Base{
         action = new Actions(driver);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void CloseSession() {
         driver.quit();
     }

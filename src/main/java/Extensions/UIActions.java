@@ -33,6 +33,7 @@ public class UIActions extends CommonOps {
     }
 
     public static void selectByVisibleText(WebElement we , String desiredText){
+        wait.until(ExpectedConditions.elementToBeClickable(we));
         Select select = new Select(we);
         select.selectByVisibleText(desiredText);
     }

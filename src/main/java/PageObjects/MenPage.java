@@ -8,10 +8,10 @@ import java.util.List;
 
 public class MenPage {
 
-    @FindBy(name = "orderby")
+    @FindBy(className = "orderby")
     public static WebElement sort_dropDown;
 
-    @FindAll({@FindBy(xpath = "//ul[@class='products columns-4']/li[2]")})
+    @FindAll({@FindBy(xpath = "//ul[@class='products columns-4']/li")})
     public static List<WebElement> products;
 
     @FindAll({@FindBy(tagName = "bdi")})

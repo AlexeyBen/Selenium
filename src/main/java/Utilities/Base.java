@@ -1,5 +1,6 @@
 package Utilities;
 
+import PageObjects.ContactUs;
 import PageObjects.HomePage;
 import PageObjects.MenPage;
 import PageObjects.SearchResultPage;
@@ -16,5 +17,6 @@ public class Base {
     public static HomePage homePage;
     public static MenPage mensPage;
     public static SearchResultPage searchResultPage;
+    public static ContactUs contactUs;
 
 }
