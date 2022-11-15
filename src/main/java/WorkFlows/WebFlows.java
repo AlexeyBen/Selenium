@@ -87,7 +87,7 @@ public class WebFlows extends CommonOps {
     public static boolean addToCart() {
         boolean addedToCart = false;
         Random ran = new Random();
-        int numOfProduct = ran.nextInt(4);
+        int numOfProduct = ran.nextInt(4) + 1;
         log.info("the chosen number of product is " + numOfProduct);
         double productPrice = getPrice(MenPage.price.get(1).getText());
         UIActions.deleteInput(MenPage.quantity_input);
